@@ -1,5 +1,6 @@
 
 import random
+import pandas
 # -------list comprehension added here -----------
 
 numbers = [1,2,3]
@@ -49,8 +50,38 @@ names = ["raihan", "kabir", "rafsan", "robin", "niloy","pathan"]
 # }
 
 student_score = {student : random.randint(1,100) for student in names}
-print(student_score)
+# print(student_score)
 
 passed_students = {student : score for (student,score) in student_score.items() if score >= 60}
-print(passed_students)
+# print(passed_students)
+
+# ---------------------take each word from sentence and calculate the letters of each sentence is given below -----------
+
+sentence = "What is the Airspeed Velocity of an Unladen Swallow?"
+result = {word : len(word) for word in sentence.split() } 
+# print(result)
+
+# -----------loop through the data frame -------
+
+student_dict = {
+    "student" : ["raihan", "kabir", "rafsan"],
+    "score" : [56,76,98]
+}
+
+# for(key,value) in student_dict.items():
+#     print(value)
+
+student_data_frame = pandas.DataFrame(student_dict)
+# print(student_data_frame)
+
+# for (key, value) in student_data_frame.items():
+#     print(value)    #it does not add anything new but below is the pandas inbuild function 
+
+for (index, row) in student_data_frame.iterrows():
+    # print(row)
+    # print(row.student)
+    # print(row.score)
+    if row.student =="raihan":
+        print(row.score)
+
 
